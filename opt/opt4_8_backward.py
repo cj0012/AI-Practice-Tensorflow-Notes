@@ -35,7 +35,7 @@ def backward():
 	loss_total = loss_mse + tf.add_n(tf.get_collection('losses'))
 	
 	#定义反向传播方法：包含正则化
-	train_step = tf.train.AdamOptimizer(learning_rate).minimize(loss_total)
+	train_step = tf.train.AdamOptimizer(learning_rate).minimize(loss_total,global_step=global_step)
 
 	with tf.Session() as sess:
 		init_op = tf.global_variables_initializer()
